@@ -24,7 +24,7 @@ class ObjectModel extends BaseModel
 		if(!empty($keyValue))
 		{
 			$keyValue->datetime = date('Y-m-d h:i A', strtotime($keyValue->createdAt));
-			$keyValue->value = json_decode($keyValue->value, true);
+			$keyValue->value = !empty(json_decode($keyValue->value, true)) ? json_decode($keyValue->value, true) : $keyValue->value;
 
 			return responseJSON(200, $keyValue->toArray(), 'Get value by key successful.');
 		}	
