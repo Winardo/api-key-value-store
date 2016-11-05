@@ -64,7 +64,7 @@ Get value depends on the key. Will return null is such key is not found.
 
 When given timestamp, will return the value of the given timestamp.
 
-Method: `POST`
+Method: `GET`
 
 Url: `http://yoururl.com/1.0/object/[yourkey]?timestamp=[yourtimestamp]`
 
