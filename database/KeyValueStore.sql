@@ -60,7 +60,7 @@ CREATE TABLE `UserSession` (
   `userId` int(11) NOT NULL,
   `userUUID` varchar(36) COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `createdAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `createdAt` datetime DEFAULT NULL,
   `expiredAt` datetime DEFAULT NULL,
   PRIMARY KEY (`sessionId`),
   KEY `FK_UserSession-userId` (`userId`),
