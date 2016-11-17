@@ -15,15 +15,16 @@ class ObjectModel extends BaseModel
 
 		if(!empty($timestamp))
 		{
-			$datetime = date('Y-m-d H:i', $timestamp);
-			$keyValue = $keyValue->where('createdAt', '>=', $datetime . ':00')->where('createdAt', '<=', $datetime . ':59');
+			$datetime = date('Y-m-d H:i:s', $timestamp);
+			$keyValue = $keyValue->where('createdAt',  $datetime);
 		}	
 
 		$keyValue = $keyValue->orderBy('createdAt', 'DESC')->orderBy('keyValueId', 'DESC')->first();
 
 		if(!empty($keyValue))
 		{
-			$keyValue->datetime = date('Y-m-d h:i A', strtotime($keyValue->createdAt));
+			$keyValue->datetime = date('Y-m-d h:i:s A', strtotime($keyValue->createdAt));
+			$keyValue->timestamp = strtotime($keyValue->createdAt);
 			$keyValue->value = !empty(json_decode($keyValue->value, true)) ? json_decode($keyValue->value, true) : $keyValue->value;
 
 			return responseJSON(200, $keyValue->toArray(), 'Get value by key successful.');
@@ -54,7 +55,7 @@ class ObjectModel extends BaseModel
 				$data = [
 					'key' => $key,
 					'value' => $value,
-					'datetime' => date('Y-m-d h:i A', strtotime($datetime)),
+					'datetime' => date('Y-m-d h:i:s A', strtotime($datetime)),
 					'timestamp' => strtotime($datetime)
 				];
 				return responseJSON(200, $data, 'Data saved successfully.');

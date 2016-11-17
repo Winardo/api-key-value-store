@@ -76,4 +76,4 @@ Headers: `Token => [yourtoken]`
 2. Empty String Key or Value will be rejected.
 3. Only one key and value can be saved at a time per request.
 4. Timestamp must be valid when getting value.
-5. Timestamp will be parsed into `yyyy-mm-dd hh:mm AM/PM` DateTime Format. Seconds in the timestamp will be ignored. Example: `1478368751` and `1478368762` will be considered as the same DateTime(2016-11-05 05:59 PM) and will return the same value.
+5. Timestamp will be parsed into `yyyy-mm-dd hh:mm:ss AM/PM` DateTime Format.
